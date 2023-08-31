@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+<h2>Welcome, {{ username }}</h2>
+<img src= "{{ teamCrest }}" alt="team crest">
+
+
+<div id="dwnld-btn">
+    <button><a href="{{url_for('download_fixtures')}}" download = "fixtures.ics">Download fixtures</a></button>
+</div>
+<div id="calendar">
+
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+            defaultView: 'month',
+            events: [
+                {% for match in matchesList %}
+                    {
+                        title : '{{ match.title }}',
+                        start : '{{ match.start }}',
+                    },
+                {% endfor %}
+            ]
+            });
+        });
+        </script>
+</div>
+
+{% endblock %}
+
+

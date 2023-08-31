@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Squad
+{% endblock %}
+
+{% block main %}
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Nationality</th>
+        <th>Date of Birth</th>
+    </tr>
+        {% for x in range(squad_list|length) %}
+            <tr>
+                <td>{{ squad_list[x].get("name") }}</td>
+                <td>{{ squad_list[x].get("position") }}</td>
+                <td>{{ squad_list[x].get("nationality") }}</td>
+                <td>{{ squad_list[x].get("dob") }}</td>
+
+            </tr>
+        {% endfor %}
+</table>
+{% endblock %}
